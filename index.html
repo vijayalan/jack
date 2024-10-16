@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Impress</title>
+    <style>
+        body {
+            background-color: rgb(250, 207, 216);
+            margin: 0;
+            padding: 0;
+            font-family: Candara, Oswald; /* Apply font globally */
+        }
+
+        p {
+            text-align: center;
+            font-size: 50px; /* Use responsive units */
+            margin-top: 100px ;
+            margin-bottom: 100px; /* Add some margin */
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            border: 1px solid; /* Added solid border */
+            border-radius: 4px;
+            width: 40%; /* Maintain percentage for responsive width */
+            max-width: 400px; /* Optional: cap the max width for larger screens */
+            height: auto; /* Maintain aspect ratio */
+            
+        }
+
+        #yes, #NO {
+            margin: 10px;
+            border: none;
+            width: 20vw; /* Use viewport width */
+            height: 10vh; /* Use viewport height */
+            font-size: 3vw; /* Responsive font size */
+            border-radius: 10px;
+            background: rgba(0, 255, 255, 0.5);
+            position: absolute; /* Use absolute positioning */
+            transform: translate(-50%, -50%); /* Center the buttons */
+        }
+
+        #yes {
+            top: 60vh; /* Position with viewport height */
+            left: 80vw; /* Center horizontally */
+        }
+
+        #NO {
+            top: 60vh; /* Position below YES button */
+            left: 20vw; /* Adjust left position */
+            transition: all 0.3s ease; /* Smooth movement */
+        }
+
+        #yes:hover {
+            color: #50d1c0;
+            background: #fff;
+            text-decoration: none;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            p {
+                font-size: 6vw; /* Adjust for smaller screens */
+            }
+
+            #yes, #NO {
+                font-size: 5vw; /* Larger font for smaller screens */
+                width: 60vw; /* Adjust button width for mobile */
+                height: 8vh; /* Adjust button height for mobile */
+            }
+        }
+        @media (max-width: 600px) {
+            #cat{
+                margin-top: 100px !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <p>"I regret the mistake I made.<br> Can you find it in your heart to forgive me?"</p>
+    <img id="cat" src="https://media.tenor.com/zGm5acSjHCIAAAAM/cat-begging.gif" alt="Begging Cat">
+    <button id="yes">YES</button>
+    <button id="NO">NO</button>
+
+    <script>
+        const buttonNo = document.getElementById('NO');
+        const buttonYes = document.getElementById('yes');
+
+        // Redirect to letter.html when the "YES" button is clicked
+        buttonYes.addEventListener('click', function() {
+            window.location.href = 'letter.html'; // Change this to your actual page path
+        });
+
+        buttonNo.addEventListener('click', function() {
+            // Get random positions within the window size
+            const xPos = Math.random() * (window.innerWidth - buttonNo.offsetWidth);
+            const yPos = Math.random() * (window.innerHeight - buttonNo.offsetHeight);
+            
+            // Set new position
+            buttonNo.style.left = `${xPos}px`;
+            buttonNo.style.top = `${yPos}px`;
+        });
+    </script>
+</body>
+</html>
